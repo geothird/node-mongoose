@@ -1,6 +1,28 @@
 extends layout
-
+block header
+  div.container
+    h2 Node Mongoose Example
+      small  Send a message
+    hr
 block content
-	div
-		a(id='sender')='Send a Message'
-		ul(id='receiver')
+  div.container
+    p
+      label(for="name") Name
+    p
+      input(name="name",value=randomName,class='form-control')
+    p
+      label(for="body") Message
+    p
+      textarea(name="body",class='form-control')
+    a(href="#", id='send_message', class='btn btn-info')='Send a Message'
+    hr
+    h2 Messages
+    hr
+    p
+      ul(id='show_message',class='list-group')
+        each val in messages
+          li(class='list-group-item')
+            p
+              small= val.message
+            h5
+              small= val.name
